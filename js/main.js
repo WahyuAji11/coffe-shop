@@ -40,7 +40,7 @@ document.addEventListener('click', function (e) {
     if(!searchButton.contains(e.target) && !searchForm.contains(e.target)) {
         searchForm.classList.remove('active');
     }
-
+    // shopping cart
     if(!shoppingButton.contains(e.target) && !shoppingCart.contains(e.target)) {
         shoppingCart.classList.remove('active');
     }
