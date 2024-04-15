@@ -20,7 +20,6 @@ document.querySelector('#search-button').onclick = (e) => {
 }
 
 // shopping cart
-const shoppingButton = document.querySelector('#shopping-cart-button');
 const shoppingCart = document.querySelector('.shopping-cart');
 document.querySelector('#shopping-cart-button').onclick = (e) => {
     shoppingCart.classList.toggle('active');
@@ -30,6 +29,7 @@ document.querySelector('#shopping-cart-button').onclick = (e) => {
 // klik diluar element
 const hamburger = document.querySelector('#hamburger-menu');
 const searchButton = document.querySelector('#search-button');
+const shoppingButton = document.querySelector('#shopping-cart-button');
 
 document.addEventListener('click', function (e) {
     // hamburger menu
@@ -40,4 +40,34 @@ document.addEventListener('click', function (e) {
     if(!searchButton.contains(e.target) && !searchForm.contains(e.target)) {
         searchForm.classList.remove('active');
     }
+
+    if(!shoppingButton.contains(e.target) && !shoppingCart.contains(e.target)) {
+        shoppingCart.classList.remove('active');
+    }
+
 });
+
+// modal box
+const itemDetailModal = document.querySelector('#item-detail-modal');
+const itemDetailButtons = document.querySelectorAll('.item-detail-button');
+
+itemDetailButtons.forEach((btn) => {
+    btn.onclick = (e) => {
+        itemDetailModal.style.display = 'flex';
+        e.preventDefault();
+    }
+})
+
+
+// close button
+document.querySelector('.modal .close-item').onclick = (e) => {
+    itemDetailModal.style.display = 'none';
+    e.preventDefault();
+}
+
+// diluar modal box
+window.onclick = (e) => {
+    if(e.target === itemDetailModal) {
+        itemDetailModal.style.display = 'none';
+    }
+}
